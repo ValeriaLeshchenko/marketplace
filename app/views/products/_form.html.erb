@@ -30,6 +30,14 @@
     <%= f.collection_select :size_ids, Size.all, :id, :name, {}, {:multiple => true} %>
 
   </div>
+
+  <%= f.fields_for :price do |p| %>
+    <div class="field">
+        <%= p.label :amount %><br>
+        <%= p.number_field :amount %>
+        <%= p.select :currency, ['RUB', 'USD', 'EUR'] %>
+    </div>
+  <% end %>
   <div class="actions">
     <%= f.submit %>
   </div>

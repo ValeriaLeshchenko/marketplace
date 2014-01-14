@@ -4,5 +4,7 @@ class Product < ActiveRecord::Base
   has_one :price
   accepts_nested_attributes_for :sizes
   accepts_nested_attributes_for :colors
+  accepts_nested_attributes_for :price
+
   has_attached_file :picture, :styles => { :medium => "300x300>", :thumb => "100x100>" }, :default_url => "/images/:style/missing.png"
 end
