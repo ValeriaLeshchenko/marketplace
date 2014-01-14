@@ -1,0 +1,13 @@
+<h1>Sellers#show</h1>
+<div id='seller'><table>
+  <tr>
+    <th>Email</th>
+    <td><%= current_seller.email %></td>
+  </tr>
+  <tr>
+    <th>Phone</th>
+    <td><%= current_seller.phone || '' %></td>
+  </tr>
+</table>
+<%= link_to 'Edit', edit_seller_path(current_seller) %>
+</div>

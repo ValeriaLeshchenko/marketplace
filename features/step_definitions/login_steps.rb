@@ -13,5 +13,5 @@ Then(/^I login successfully$/) do
 end
 
 Then(/^get redirected to my profile$/) do
-  pending # express the regexp above with the code you wish you had
+  expect(page).to have_css '#seller'
 end

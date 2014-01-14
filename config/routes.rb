@@ -17,11 +17,13 @@ Marketplace::Application.routes.draw do
   #   resources :products
 
   # Example resource route with options:
-  #   resources :products do
-  #     member do
-  #       get 'short'
-  #       post 'toggle'
-  #     end
+   resources :sellers do
+     member do
+       get 'show'
+       get 'edit'
+       put 'update', as: 'update'
+     end
+   end
   #
   #     collection do
   #       get 'sold'
