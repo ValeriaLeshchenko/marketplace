@@ -1,4 +1,6 @@
 Marketplace::Application.routes.draw do
+  resources :products
+
   devise_for :sellers, :path => '', :path_names => { :sign_in => "login", :sign_out => "logout", :sign_up => "register" }
   root "home#index"
   # The priority is based upon order of creation: first created -> highest priority.

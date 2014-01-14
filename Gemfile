@@ -39,7 +39,12 @@ group :development, :test do
 end
 
 gem 'devise'
+
 gem "twitter-bootstrap-rails"
+
+gem "paperclip", "~> 3.0"
+
+gem 'habtm_generator', :group => :development
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.

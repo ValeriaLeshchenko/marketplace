@@ -5,3 +5,25 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+colors = Color.create([{ name: 'red' },
+                       { name: 'black' },
+                       { name: 'purple' },
+                       { name: 'pink' },
+                       { name: 'blue' },
+                       { name: 'green' },
+                       { name: 'orange' },
+                       { name: 'white' },
+                       { name: 'yellow' },
+                       { name: 'brown' },
+                       { name: 'gray' }
+])
+
+sizes = Size.create([{ name: 'XS' },
+                     { name: 'S' },
+                     { name: 'M' },
+                     { name: 'L' },
+                     { name: 'XL' },
+                     { name: 'XXL' },
+                     { name: 'XXXL' }
+])

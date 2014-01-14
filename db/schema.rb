@@ -11,7 +11,51 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140114130018) do
+ActiveRecord::Schema.define(version: 20140114180903) do
+
+  create_table "colors", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "colors_products", id: false, force: true do |t|
+    t.integer "color_id"
+    t.integer "product_id"
+  end
+
+  add_index "colors_products", ["color_id", "product_id"], name: "colors_products_index"
+
+  create_table "prices", force: true do |t|
+    t.decimal  "amount",     precision: 8, scale: 2
+    t.string   "currency"
+    t.integer  "product_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "prices", ["product_id"], name: "index_prices_on_product_id"
+
+  create_table "products", force: true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.string   "company"
+    t.integer  "count"
+    t.boolean  "published",            default: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "picture_file_name"
+    t.string   "picture_content_type"
+    t.integer  "picture_file_size"
+    t.datetime "picture_updated_at"
+  end
+
+  create_table "products_sizes", id: false, force: true do |t|
+    t.integer "product_id"
+    t.integer "size_id"
+  end
+
+  add_index "products_sizes", ["product_id", "size_id"], name: "products_sizes_index"
 
   create_table "sellers", force: true do |t|
     t.string   "email",               default: "", null: false
@@ -23,5 +67,11 @@ ActiveRecord::Schema.define(version: 20140114130018) do
   end
 
   add_index "sellers", ["email"], name: "index_sellers_on_email", unique: true
+
+  create_table "sizes", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
 end
