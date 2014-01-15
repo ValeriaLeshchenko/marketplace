@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140114180903) do
+ActiveRecord::Schema.define(version: 20140115140458) do
 
   create_table "colors", force: true do |t|
     t.string   "name"
@@ -41,7 +41,7 @@ ActiveRecord::Schema.define(version: 20140114180903) do
     t.text     "description"
     t.string   "company"
     t.integer  "count"
-    t.boolean  "published",            default: false
+    t.boolean  "published",            default: true
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "picture_file_name"
