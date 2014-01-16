@@ -1,0 +1,24 @@
+<table class="table table-striped">
+  <thead>
+  <tr>
+          <td></td>
+          <th>Name</th>
+          <th>Description</th>
+          <th>Company</th>
+          <th>Number</th>
+        </tr>
+  </thead>
+  <tbody>
+  <% @products.each do |product| %>
+
+      <tr>
+        <td><%= image_tag product.picture.url(:thumb), class: "img-responsive" %></td>
+        <td><%= product.name %></td>
+        <td><%= product.description %></td>
+        <td><%= product.company %></td>
+        <td><%= product.count %></td>
+      </tr>
+
+  <% end %>
+  </tbody>
+</table>
