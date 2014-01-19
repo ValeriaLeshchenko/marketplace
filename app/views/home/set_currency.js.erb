@@ -1,0 +1,51 @@
+$('.price').each(function () {
+  var price = $(this).next(".next").html();
+  $(this).html(to_currency(price));
+  $('#hidden').text('<%= Price.biggest(params[:currency]) %>');
+  $("#slider-range").slider({
+    range: true,
+    min: 0,
+    max: (Number)($('#hidden').text()),
+    step: 0.5,
+    values: [ 0, (Number)($('#hidden').text())],
+    slide: function (event, ui) {
+      $("#amount").val((ui.values[ 0 ]).toFixed(2) + " - " + (ui.values[ 1 ]).toFixed(2));
+    }
+//    change: function (event, ui) {
+//      $('#price_to_search').text(range_to_currency($("#amount").val()));
+//    }
+  });
+  $("#amount").val(($("#slider-range").slider("values", 0)).toFixed(2) +
+          " - " + ($("#slider-range").slider("values", 1)).toFixed(2));
+
+});
+
+
+function to_currency(price) {
+  currency = "<%= params[:currency]%>";
+  switch (currency) {
+    case 'USD':
+      return (Number)(price).toFixed(2);
+    case 'RUB':
+      return (price * 33.56).toFixed(2);
+    case 'EUR':
+      return (price * 0.74).toFixed(2);
+  }
+}
+
+
+//alert(range_to_currency($("#amount").val()));
+//$('#price_to_search').text(range_to_currency($("#amount").val()));
+//function range_to_currency(range) {
+//  currency = "<%= params[:currency]%>";
+//  range_array = range.split(" - ");
+//  switch (currency) {
+//    case 'USD':
+//      return [(Number)(range_array[0]).toFixed(2), (Number)(range_array[1]).toFixed(2)];
+//    case 'RUB':
+//      return [(Number)(range_array[0] * 0.03).toFixed(2), (Number)(range_array[1] * 0.03).toFixed(2)];
+//    case 'EUR':
+//      return [(Number)(range_array[0] * 1.36).toFixed(2), (Number)(range_array[1] * 1.36).toFixed(2)];
+//  }
+//}
+

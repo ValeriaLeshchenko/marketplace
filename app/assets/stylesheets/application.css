@@ -9,5 +9,17 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require_self
+ *= require jquery.ui.all
  *= require_tree .
  */
+
+#amount {
+    border:0;
+    color:#f6931f;
+    font-weight:bold;
+    cursor:default;
+}
+
+.ui-slider {
+    width:17em; /* !important;        */
+}

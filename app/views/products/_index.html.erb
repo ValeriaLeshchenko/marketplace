@@ -1,23 +1,32 @@
+<% content_for :sidebar do %>
+
+  <%= render 'products/search' %>
+
+<% end %>
+
 <table class="table table-striped">
   <thead>
   <tr>
-          <td></td>
-          <th>Name</th>
-          <th>Description</th>
-          <th>Company</th>
-          <th>Number</th>
-        </tr>
+    <td></td>
+    <th>Name</th>
+    <th>Description</th>
+    <th>Company</th>
+    <th>Number</th>
+    <th>Price</th>
+  </tr>
   </thead>
   <tbody>
   <% @products.each do |product| %>
 
-      <tr>
-        <td><%= image_tag product.picture.url(:thumb), class: "img-responsive" %></td>
-        <td><%= product.name %></td>
-        <td><%= product.description %></td>
-        <td><%= product.company %></td>
-        <td><%= product.count %></td>
-      </tr>
+    <tr>
+      <td><%= image_tag product.picture.url(:thumb), class: "img-responsive" %></td>
+      <td><%= product.name %></td>
+      <td><%= product.description %></td>
+      <td><%= product.company %></td>
+      <td><%= product.count %></td>
+      <td><span class="price"><%= product.price.exchange(session[:currency]) %></span>
+        <span class='next' style="display:none"><%= product.price.exchange %></span></td>
+    </tr>
 
   <% end %>
   </tbody>

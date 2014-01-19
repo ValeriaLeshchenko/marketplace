@@ -51,6 +51,12 @@
             <ul class="nav">
               <%= navbar_links %>
             </ul>
+            <%= form_tag currency_path, class: 'navbar-search', id: 'currency_form', remote: true do %>
+                <div class="form-group">
+                <%= select_tag 'currency', options_for_select(["USD", "EUR", "RUB"], session[:currency]), onchange: "$('#currency_form').submit();" %>
+              </div>
+              <% end %>
+
           </div><!--/.nav-collapse -->
         </div>
       </div>
@@ -63,9 +69,8 @@
             <ul class="nav nav-list">
               <!--<li class="nav-header">Sidebar</li>-->
               <li><%= link_to "Add new product", new_product_path %></li>
-              <li><%= link_to "Link2", "/path2"  %></li>
-              <li><%= link_to "Link3", "/path3"  %></li>
             </ul>
+            <%= content_for :sidebar %>
           </div><!--/.well -->
         </div><!--/span-->
         <div class="span7">

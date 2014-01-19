@@ -1,0 +1,25 @@
+<%= form_tag root_path, class: 'form-inline', method: :get, turboboost: true do %>
+ <div class="form-group">
+   <!--<%= text_field_tag :query, params[:query], class: 'form-control' %>-->
+   <p><label for="query_colors">Colors:</label></p>
+   <%= select_tag 'query[colors]', options_from_collection_for_select(Color.all, "name", "name"), multiple: true %>
+   <p><label for="query_sizes">Sizes:</label></p>
+   <%= select_tag 'query[sizes]', options_from_collection_for_select(Size.all, "name", "name"), multiple: true %>
+   <!--<%= select_tag 'query[price]', options_from_collection_for_select(Price.all, "amount", "amount") %>-->
+
+   <p><label for="amount">Price range:</label></p>
+
+   <div id="hidden" style="display: none"><%= Price.biggest(session[:currency]) %></div>
+   <p>
+   <%= text_field_tag 'query[price]', nil, id: 'amount', readonly: 'readonly' %></p>
+   <!--<%= hidden_field_tag 'price', nil, id: "price_to_search" %>-->
+   <!--<input type="text" id="amount" disabled="disabled" name="query[price]">-->
+   <p id="slider-range"></p>
+
+   <%= submit_tag 'Search', class: "btn", id: 'submit' %>
+   <% if params[:query].present? %>
+     <%= link_to 'clear', root_path, id: 'clear' %>
+   <% end %>
+ </div>
+<% end %>
+<%= debug params %>
