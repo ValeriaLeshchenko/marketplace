@@ -57,6 +57,8 @@ gem "select2-rails"
 
 gem "to_regexp", "~> 0.2.1"
 
+gem 'kaminari'
+
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false

@@ -49,6 +49,7 @@ $(function () {
         //        minimumInputLength: 3,
         ajax: {
             dataType: "json",
+            quietMillis: 100,
             url: "/tags/index.json",
             data: function (term, page) {
                 return {
@@ -58,7 +59,11 @@ $(function () {
                 };
             },
             results: function (data, page) {
-                return {results: data};
+                console.log(data.length);
+                var more = (page * 10) < data[0].total;
+                console.log(page);
+                console.log(more);
+                return {results: data, more: more};
             }
         }
     });
@@ -66,9 +71,6 @@ $(function () {
 
 });
 
-function formatValues(data) {
-    return data.text;
-}
 
 setInterval(function () {
     $('#submit[disabled=disabled]').removeAttr("disabled");
