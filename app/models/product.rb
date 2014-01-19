@@ -1,4 +1,5 @@
 class Product < ActiveRecord::Base
+  has_and_belongs_to_many :tags
   searchkick index_name: 'products'
 
   def search_data
@@ -9,6 +10,7 @@ class Product < ActiveRecord::Base
         count: count,
         color_name: colors.map(&:name),
         size_name: sizes.map(&:name),
+        tag_name: tags.map(&:name),
         price_amount_usd: price.exchange
     }
   end

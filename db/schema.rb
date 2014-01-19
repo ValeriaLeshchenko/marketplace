@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140115140458) do
+ActiveRecord::Schema.define(version: 20140119173724) do
 
   create_table "colors", force: true do |t|
     t.string   "name"
@@ -57,6 +57,13 @@ ActiveRecord::Schema.define(version: 20140115140458) do
 
   add_index "products_sizes", ["product_id", "size_id"], name: "products_sizes_index"
 
+  create_table "products_tags", id: false, force: true do |t|
+    t.integer "product_id"
+    t.integer "tag_id"
+  end
+
+  add_index "products_tags", ["product_id", "tag_id"], name: "products_tags_index"
+
   create_table "sellers", force: true do |t|
     t.string   "email",               default: "", null: false
     t.string   "encrypted_password",  default: "", null: false
@@ -69,6 +76,12 @@ ActiveRecord::Schema.define(version: 20140115140458) do
   add_index "sellers", ["email"], name: "index_sellers_on_email", unique: true
 
   create_table "sizes", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "tags", force: true do |t|
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"

@@ -16,6 +16,7 @@
 //= require twitter/bootstrap
 //= require turbolinks
 //= require turboboost
+//= require select2
 //= require_tree .
 
 
@@ -37,6 +38,10 @@ $(function () {
     });
     $("#amount").val(($("#slider-range").slider("values", 0)).toFixed(2) +
         " - " + ($("#slider-range").slider("values", 1)).toFixed(2));
+    $("select").select2({
+        width: 'resolve'
+    });
+
 //    $('#price_to_search').text(range_to_currency($("#amount").val()));
 
 });
@@ -57,6 +62,9 @@ setInterval(function () {
     });
     $("#amount").val(($("#slider-range").slider("values", 0)).toFixed(2) +
         " - " + ($("#slider-range").slider("values", 1)).toFixed(2));
+    $('select[class=select2]').select2({
+        width: 'resolve'
+    });
 }, 500);
 
 

@@ -20,6 +20,9 @@ $('.price').each(function () {
 
 });
 
+$("select").select2({
+  width: 'resolve'
+});
 
 function to_currency(price) {
   currency = "<%= params[:currency]%>";

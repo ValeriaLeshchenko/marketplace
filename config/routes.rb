@@ -1,4 +1,5 @@
 Marketplace::Application.routes.draw do
+  get "tags/index"
   resources :products
 
   devise_for :sellers, :path => '', :path_names => { :sign_in => "login", :sign_out => "logout", :sign_up => "register" }

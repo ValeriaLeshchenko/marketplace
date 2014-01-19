@@ -13,6 +13,7 @@
     <th>Company</th>
     <th>Number</th>
     <th>Price</th>
+    <th>Tags</th>
   </tr>
   </thead>
   <tbody>
@@ -26,6 +27,7 @@
       <td><%= product.count %></td>
       <td><span class="price"><%= product.price.exchange(session[:currency]) %></span>
         <span class='next' style="display:none"><%= product.price.exchange %></span></td>
+      <td><%= product.tags.map(&:name).join(', ') %></td>
     </tr>
 
   <% end %>
