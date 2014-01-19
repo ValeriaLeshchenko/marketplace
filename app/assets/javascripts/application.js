@@ -42,9 +42,34 @@ $(function () {
         width: 'resolve'
     });
 
+
+    $("#e7").select2({
+        multiple: true,
+        width: 'resolve',
+        //        minimumInputLength: 3,
+        ajax: {
+            dataType: "json",
+            url: "/tags/index.json",
+            data: function (term, page) {
+                return {
+                    q: term,
+                    page_limit: 10, // page size
+                    page: page // page number
+                };
+            },
+            results: function (data, page) {
+                return {results: data};
+            }
+        }
+    });
 //    $('#price_to_search').text(range_to_currency($("#amount").val()));
 
 });
+
+function formatValues(data) {
+    return data.text;
+}
+
 setInterval(function () {
     $('#submit[disabled=disabled]').removeAttr("disabled");
     $("#slider-range:not(.ui-slider)").slider({
