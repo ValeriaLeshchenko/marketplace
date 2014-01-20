@@ -28,3 +28,8 @@
 .table_select2, #currency_select {
     width:5em !important;
 }
+
+/*.field_with_errors {*/
+    /*background-color: #3d3d3d !important;*/
+    /*color: white !important;*/
+/*}*/

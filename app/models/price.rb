@@ -1,9 +1,9 @@
 class Price < ActiveRecord::Base
   belongs_to :product
-  ##CURRENCIES = ['RUB', 'USD', 'EUR']
-  #def to_s
-  #  "#{currency} #{amount}"
-  #end
+
+  validates_presence_of [:amount, :currency]
+  validates_inclusion_of :currency, in: %w(RUB USD EUR)
+  validates_format_of :amount, with: /\A\d*\.\d{2,}\z/
 
   def exchange(target_currency='USD')
     currencies = [currency, target_currency]
