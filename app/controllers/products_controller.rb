@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-  before_action :set_product, only: [:show, :edit, :update, :destroy]
+  before_action :set_product, only: [:show, :edit, :update, :destroy, :remove]
 
   # GET /products
   # GET /products.json
@@ -64,16 +64,21 @@ class ProductsController < ApplicationController
     end
   end
 
-  private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_product
-      @product = Product.find(params[:id])
-    end
+  def remove
+    @product.update_attributes({published: false})
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def product_params
-      params.require(:product).permit(:name, :description, :company, :count,
-                                      :published, :picture, :price_attributes => [:amount, :currency],
-                                      :color_ids => [], :size_ids => [], :tag_ids => [])
-    end
+  end
+
+  private
+  # Use callbacks to share common setup or constraints between actions.
+  def set_product
+    @product = Product.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def product_params
+    params.require(:product).permit(:name, :description, :company, :count,
+                                    :published, :picture, :tag_list, :price_attributes => [:amount, :currency],
+                                    :color_ids => [], :size_ids => [], :tag_ids => [])
+  end
 end

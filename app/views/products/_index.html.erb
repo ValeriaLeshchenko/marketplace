@@ -7,7 +7,7 @@
 <table class="table table-striped" id="product_index">
   <thead>
   <tr>
-    <td></td>
+    <th>Picture</th>
     <th>Name</th>
     <th>Description</th>
     <th>Company</th>
@@ -21,15 +21,23 @@
   <tbody>
   <% @products.each do |product| %>
 
-    <tr>
-      <td><%= image_tag product.picture.url(:thumb), class: "img-responsive" %></td>
+    <tr id="<%= product.id %>">
+      <td><%= image_tag product.picture.url(:thumb), class: "img-responsive" %>
+      <%= form_tag product_remove_path(product), remote: true do |f| %>
+        <%= hidden_field_tag :id, product.id %>
+        <%= submit_tag 'Remove', data: { confirm: 'Are you sure?' } %>
+      <% end %>
+      </td>
       <td><%= product.name %></td>
       <td><%= product.description %></td>
       <td><%= product.company %></td>
       <td><%= product.count %></td>
       <td><span class="price"><%= product.price.exchange(session[:currency]) %></span>
         <span class='next' style="display:none"><%= product.price.exchange %></span></td>
-      <td><%= product.tags.map(&:name).join(', ') %></td>
+      <td><% product.tag_name_list.each do |tag| %>
+        <span class="label"><%= tag %></span>
+          <% end %>
+      </td>
       <td><%= select_tag "colors", options_from_collection_for_select(product.colors, "id", "name"), readonly: true, class: 'table_select2' %></td>
       <td><%= select_tag "sizes", options_from_collection_for_select(product.sizes, "id", "name"), readonly: true, class: 'table_select2' %></td>
       <td></td>

@@ -1,6 +1,8 @@
 Marketplace::Application.routes.draw do
   get "tags/index"
-  resources :products
+  resources :products do
+    post 'remove'
+  end
 
   devise_for :sellers, :path => '', :path_names => { :sign_in => "login", :sign_out => "logout", :sign_up => "register" }
   root "home#index"

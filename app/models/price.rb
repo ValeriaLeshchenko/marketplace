@@ -25,7 +25,7 @@ class Price < ActiveRecord::Base
            end
 
     #"#{target_currency} #{(amount * rate).round(2)}"
-    (amount * rate).round(2)
+    sprintf('%.2f', amount * rate)
   end
 
   class << self

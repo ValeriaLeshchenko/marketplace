@@ -25,10 +25,11 @@ class HomeController < ApplicationController
       @products = Product.search '*', where: {color_name: colors,
                                               size_name: sizes,
                                               tag_id: tags,
-                                              price_amount_usd: price}
+                                              price_amount_usd: price,
+                                              published: true}
 
     else
-      @products = Product.all
+      @products = Product.search '*', where: {published: true}
     end
   end
 
