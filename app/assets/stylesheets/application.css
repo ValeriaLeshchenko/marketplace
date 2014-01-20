@@ -24,3 +24,7 @@
 .ui-slider {
     width:17em; /* !important;        */
 }
+
+.table_select2, #currency_select {
+    width:5em !important;
+}

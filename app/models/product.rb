@@ -11,6 +11,7 @@ class Product < ActiveRecord::Base
         color_name: colors.map(&:name),
         size_name: sizes.map(&:name),
         tag_name: tags.map(&:name),
+        tag_id: tags.map(&:id),
         price_amount_usd: price.exchange
     }
   end

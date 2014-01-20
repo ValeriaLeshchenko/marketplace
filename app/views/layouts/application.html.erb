@@ -53,7 +53,7 @@
             </ul>
             <%= form_tag currency_path, class: 'navbar-search', id: 'currency_form', remote: true do %>
                 <div class="form-group">
-                <%= select_tag 'currency', options_for_select(["USD", "EUR", "RUB"], session[:currency]), onchange: "$('#currency_form').submit();", class: 'select2' %>
+                <%= select_tag 'currency', options_for_select(["USD", "EUR", "RUB"], session[:currency]), onchange: "$('#currency_form').submit();", class: 'select2', id: 'currency_select' %>
               </div>
               <% end %>
 

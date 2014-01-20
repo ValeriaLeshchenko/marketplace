@@ -42,7 +42,6 @@ $(function () {
         width: 'resolve'
     });
 
-
     $("#e7").select2({
         multiple: true,
         width: 'resolve',
@@ -59,10 +58,7 @@ $(function () {
                 };
             },
             results: function (data, page) {
-                console.log(data.length);
                 var more = (page * 10) < data[0].total;
-                console.log(page);
-                console.log(more);
                 return {results: data, more: more};
             }
         }
@@ -89,9 +85,30 @@ setInterval(function () {
     });
     $("#amount").val(($("#slider-range").slider("values", 0)).toFixed(2) +
         " - " + ($("#slider-range").slider("values", 1)).toFixed(2));
-    $('select[class=select2]').select2({
+    $('select[class=select2], select[class=table_select2]').select2({
         width: 'resolve'
     });
+    $("#e7[class=select2]").select2({
+            multiple: true,
+            width: 'resolve',
+            //        minimumInputLength: 3,
+            ajax: {
+                dataType: "json",
+                quietMillis: 100,
+                url: "/tags/index.json",
+                data: function (term, page) {
+                    return {
+                        q: term,
+                        page_limit: 10, // page size
+                        page: page // page number
+                    };
+                },
+                results: function (data, page) {
+                    var more = (page * 10) < data[0].total;
+                    return {results: data, more: more};
+                }
+            }
+        });
 }, 500);
 
 

@@ -9,7 +9,7 @@ class HomeController < ApplicationController
       sizes = params[:query][:sizes].nil? ? Size.pluck(:name) : params[:query][:sizes]
       price_low = BigDecimal.new(params[:query][:price].split(' - ')[0])
       price_high =  BigDecimal.new(params[:query][:price].split(' - ')[1])
-      tags = params[:query][:tags].nil? ? Tag.pluck(:name) : params[:query][:tags]
+      tags = params[:query][:tags].nil? ? Tag.pluck(:id) : params[:query][:tags]
       #if params[:query][:price].nil?
       #  price = Price.all.map(&:exchange)
       price = case session[:currency]
@@ -23,7 +23,7 @@ class HomeController < ApplicationController
 
       @products = Product.search '*', where: {color_name: colors,
                                               size_name: sizes,
-                                              tag_name: tags,
+                                              tag_id: tags,
                                               price_amount_usd: price}
 
     else
