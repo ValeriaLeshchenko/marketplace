@@ -53,7 +53,7 @@
             </ul>
             <%= form_tag currency_path, class: 'navbar-search', id: 'currency_form', remote: true do %>
                 <div class="form-group">
-                <%= select_tag 'currency', options_for_select(["USD", "EUR", "RUB"], session[:currency]), onchange: "$('#currency_form').submit();", class: 'select2', id: 'currency_select' %>
+                  <%= content_for :nav %>
               </div>
               <% end %>
 
@@ -66,10 +66,10 @@
       <div class="row-fluid">
         <div class="span3">
           <div class="well sidebar-nav">
-            <ul class="nav nav-list">
+            <!--<ul class="nav nav-list">-->
               <!--<li class="nav-header">Sidebar</li>-->
-              <li><%= link_to "Add new product", new_product_path %></li>
-            </ul>
+              <p><%= link_to "Add new product", new_product_path %></p>
+            <!--</ul>-->
             <%= content_for :sidebar %>
           </div><!--/.well -->
         </div><!--/span-->
