@@ -18,9 +18,11 @@ class Product < ActiveRecord::Base
   end
 
   def should_index?
-    published # only index published records
+    published && price# only index published records
   end
 
+
+  belongs_to :seller
   has_and_belongs_to_many :sizes
   has_and_belongs_to_many :colors
   has_one :price

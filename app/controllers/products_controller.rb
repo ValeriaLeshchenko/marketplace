@@ -1,10 +1,13 @@
 class ProductsController < ApplicationController
   before_action :set_product, only: [:show, :edit, :update, :destroy, :remove]
+  before_action :authorized?
+
 
   # GET /products
   # GET /products.json
   def index
-    @products = Product.all
+    #@products = Product.all
+    redirect_to root_path
   end
 
   # GET /products/1
@@ -78,7 +81,13 @@ class ProductsController < ApplicationController
   # Never trust parameters from the scary internet, only allow the white list through.
   def product_params
     params.require(:product).permit(:name, :description, :company, :count,
-                                    :published, :picture, :tag_list, :price_attributes => [:amount, :currency],
+                                    :published, :picture, :tag_list, :seller_id, :price_attributes => [:amount, :currency],
                                     :color_ids => [], :size_ids => [], :tag_ids => [])
+  end
+
+  def authorized?
+    unless current_seller
+      redirect_to root_url
+    end
   end
 end

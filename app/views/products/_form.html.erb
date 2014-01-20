@@ -42,6 +42,7 @@
         <%= p.select :currency, ['RUB', 'USD', 'EUR'] %>
     </div>
   <% end %>
+  <%= f.hidden_field :seller_id, value: current_seller.id %>
   <div class="actions">
     <%= f.submit %>
   </div>

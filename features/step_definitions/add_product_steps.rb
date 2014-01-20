@@ -17,6 +17,7 @@ Then(/^I submit the form with valid product data$/) do
   select "red", :from => 'product_color_ids'
   select "white", :from => 'product_color_ids'
   select "XS", :from => 'product_size_ids'
+  fill_in 'Tags', :with => 'stylish, cool'
   fill_in("Amount", :with => 24)
   select "RUB", :from => 'product_price_attributes_currency'
   click_button("Create Product")

@@ -23,10 +23,12 @@
 
     <tr id="<%= product.id %>">
       <td><%= image_tag product.picture.url(:thumb), class: "img-responsive" %>
-      <%= form_tag product_remove_path(product), remote: true do |f| %>
-        <%= hidden_field_tag :id, product.id %>
-        <%= submit_tag 'Remove', data: { confirm: 'Are you sure?' } %>
-      <% end %>
+        <% if current_seller && current_seller.id == product.seller_id %>
+          <%= form_tag product_remove_path(product), remote: true do |f| %>
+            <%= hidden_field_tag :id, product.id %>
+            <%= submit_tag 'Remove', data: {confirm: 'Are you sure?'} %>
+          <% end %>
+        <% end %>
       </td>
       <td><%= product.name %></td>
       <td><%= product.description %></td>
@@ -34,9 +36,10 @@
       <td><%= product.count %></td>
       <td><span class="price"><%= product.price.exchange(session[:currency]) %></span>
         <span class='next' style="display:none"><%= product.price.exchange %></span></td>
-      <td><% product.tag_name_list.each do |tag| %>
-        <span class="label"><%= tag %></span>
-          <% end %>
+      <td>
+        <% product.tag_name_list.each do |tag| %>
+          <span class="label"><%= tag %></span>
+        <% end %>
       </td>
       <td><%= select_tag "colors", options_from_collection_for_select(product.colors, "id", "name"), readonly: true, class: 'table_select2' %></td>
       <td><%= select_tag "sizes", options_from_collection_for_select(product.sizes, "id", "name"), readonly: true, class: 'table_select2' %></td>

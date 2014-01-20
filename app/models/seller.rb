@@ -3,4 +3,6 @@ class Seller < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable, :trackable, :recoverable
   devise :database_authenticatable, :registerable,
          :rememberable, :validatable
+
+  has_many :products
 end

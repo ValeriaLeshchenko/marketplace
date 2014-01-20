@@ -1,5 +1,5 @@
-<h1>Sellers#show</h1>
-<div id='seller'><table>
+<h1>Profile</h1>
+<div id='seller'><table class="table">
   <tr>
     <th>Email</th>
     <td><%= current_seller.email %></td>
@@ -8,6 +8,9 @@
     <th>Phone</th>
     <td><%= current_seller.phone || '' %></td>
   </tr>
+  <tr>
+      <td><%= link_to 'Edit', edit_seller_path(current_seller) %></td>
+      <td></td>
+    </tr>
 </table>
-<%= link_to 'Edit', edit_seller_path(current_seller) %>
 </div>

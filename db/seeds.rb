@@ -28,21 +28,28 @@ sizes = Size.create([{ name: 'XS' },
                      { name: 'XXXL' }
 ])
 
-
+Seller.create({email: 'email@example.com',
+                        password: 'password',
+                        phone: '067 867 5747'})
 
 products = Product.create([{name: 'Trousers', description: 'Checked men\'s trousers', company: 'Zara', count: 10,
-                picture: File.open(File.join(Rails.root, 'public/trousers.jpeg'))},
+                picture: File.open(File.join(Rails.root, 'public/trousers.jpeg')),
+                           seller_id: 1},
                 {name: 'Chiffon dance skirt', description: 'Very nice handmade four panel chiffon skirt
                 with sequins', company: 'Atlanta belly dance', count: 4,
-                picture: File.open(File.join(Rails.root, 'public/skirt.jpg'))},
+                picture: File.open(File.join(Rails.root, 'public/skirt.jpg')),
+                                           seller_id: 1},
                 {name: 'Trainers', description: 'Mizuno wave stylish trainers', company: 'Mizuno', count: 15,
-                picture: File.open(File.join(Rails.root, 'public/shoes.jpg'))}
+                picture: File.open(File.join(Rails.root, 'public/shoes.jpg')),
+                                           seller_id: 1}
 ])
 
 prices = Price.create([{ amount: 5.23, currency: 'USD', product: products[0]},
                        { amount: 14.30, currency: 'RUB', product: products[1]},
                        { amount: 3.40, currency: 'EUR', product: products[2]}
 ])
+
+
 
 products[0].colors << colors[0]
 products[0].colors << colors[1]
