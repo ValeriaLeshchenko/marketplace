@@ -1,16 +1,20 @@
 <h1>Profile</h1>
-<div id='seller'><table class="table">
-  <tr>
-    <th>Email</th>
-    <td><%= current_seller.email %></td>
-  </tr>
-  <tr>
-    <th>Phone</th>
-    <td><%= current_seller.phone || '' %></td>
-  </tr>
-  <tr>
+<div id='seller'>
+  <table class="table">
+    <tr>
+      <th>Email</th>
+      <td><%= current_seller.email %></td>
+    </tr>
+    <tr>
+      <th>Phone</th>
+      <td><%= current_seller.phone || '' %></td>
+    </tr>
+    <tr>
       <td><%= link_to 'Edit', edit_seller_path(current_seller) %></td>
       <td></td>
     </tr>
-</table>
+  </table>
 </div>
+<%= content_for :seller_links do %>
+  <p><%= link_to 'Home', root_path(current_seller) %></p>
+<% end %>

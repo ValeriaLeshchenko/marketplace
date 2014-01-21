@@ -65,7 +65,8 @@ $(function () {
             }
         });
     }
-//    $('#price_to_search').text(range_to_currency($("#amount").val()));
+
+    $('#product_tag_list').val('');
 
 });
 
@@ -114,17 +115,3 @@ setInterval(function () {
         });
     }
 }, 500);
-
-
-//function range_to_currency(range) {
-//    currency = $('#currency').val();
-//    range_array = range.split(" - ");
-//    switch (currency) {
-//        case 'USD':
-//            return [(Number)(range_array[0]).toFixed(2), (Number)(range_array[1]).toFixed(2)];
-//        case 'RUB':
-//            return [(Number)(range_array[0] * 0.03).toFixed(2), (Number)(range_array[1] * 0.03).toFixed(2)];
-//        case 'EUR':
-//            return [(Number)(range_array[0] * 1.36).toFixed(2), (Number)(range_array[1] * 1.36).toFixed(2)];
-//    }
-//}

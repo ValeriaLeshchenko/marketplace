@@ -1,4 +1,23 @@
 
+# Guest visit
+Given(/^I am a guest$/) do
+
+end
+Given(/^I am a seller$/) do
+  @current_seller = Seller.create!(
+      :password => 'password',
+      :password_confirmation => 'password',
+      :email => "seller@example.com"
+  )
+end
+
+When(/^I login$/) do
+  visit "/login"
+  fill_in("Email", :with => 'seller@example.com')
+  fill_in("Password", :with => 'password')
+  click_button("Sign in")
+end
+
 When(/^I visit my profile$/) do
   visit seller_path(@current_seller)
 end

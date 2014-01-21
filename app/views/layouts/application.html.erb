@@ -72,6 +72,7 @@
         <!--<li class="nav-header">Sidebar</li>-->
         <% if current_seller %>
           <p><%= link_to "Add new product", new_product_path %></p>
+          <%= content_for :seller_links %>
           <% else %>
         Hello, guest!
         <% end %>

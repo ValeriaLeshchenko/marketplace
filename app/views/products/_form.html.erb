@@ -50,7 +50,7 @@
   </div>
   <%= f.fields_for :price do |p| %>
     <div class="field">
-        <%= p.label :amount %><br>
+        <%= p.label :amount, "Price (in 2 decimal format, eg.: '12.35')" %><br>
         <%= p.number_field :amount %>
         <%= p.select :currency, ['RUB', 'USD', 'EUR'] %>
     </div>

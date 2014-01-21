@@ -2,8 +2,7 @@ class Product < ActiveRecord::Base
   has_and_belongs_to_many :tags
   searchkick index_name: 'products'
 
-  validates_presence_of [:name, :description, :company, :count, :seller_id, :picture]
-
+  validates_presence_of [:name, :description, :company, :count, :picture]
   validates_numericality_of :count, only_integer: true
 
   def search_data
@@ -32,9 +31,9 @@ class Product < ActiveRecord::Base
   has_one :price
   accepts_nested_attributes_for :sizes
 
-  validates_presence_of :sizes
-  validates_presence_of :colors
-  validates_presence_of :tags
+  #validates_presence_of :sizes
+  #validates_presence_of :colors
+  #validates_presence_of :tags
 
 
   accepts_nested_attributes_for :colors
