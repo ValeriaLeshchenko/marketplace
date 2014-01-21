@@ -2,10 +2,10 @@
 
 Test app
 
-rake db:drop db:create db:migrate
-rake db:seed
-rake searchkick:reindex CLASS=Product (gem searchkick для elasticsearch)
-rake db:test:prepare
-cucumber features/
-rspec spec
-rails s
+* rake db:drop db:create db:migrate
+* rake db:seed
+* rake searchkick:reindex CLASS=Product (gem searchkick для elasticsearch)
+* rake db:test:prepare
+* cucumber features/
+* rspec spec
+* rails s
